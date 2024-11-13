@@ -1,3 +1,4 @@
+print("juego serpiente")
 import random
 import os
 import time
