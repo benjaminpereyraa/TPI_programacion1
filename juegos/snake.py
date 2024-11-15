@@ -77,6 +77,4 @@ def iniciar_juego():
             print("¡Game Over!")
             sys.exit()
         time.sleep(0.2)  # Esperar un momento antes de actualizar
-
-if __name__ == "_main_":
-    iniciar_juego()
+iniciar_juego()
