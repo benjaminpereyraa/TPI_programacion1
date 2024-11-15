@@ -132,3 +132,4 @@ def iniciar_juego():
             
             if turno == 9:
                 print("Empate....")
+iniciar_juego()
