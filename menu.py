@@ -1,3 +1,9 @@
+from tatetii_module import iniciar_juego
+# Ensure that the tatetii_module is available in the same directory or in the Python path
+try:
+    from tatetii_module import iniciar_juego
+except ModuleNotFoundError:
+    print("Error: The 'tatetii_module' module is not found. Please make sure the module is in the same directory or in the Python path.")
 
 
 opcion = 5
