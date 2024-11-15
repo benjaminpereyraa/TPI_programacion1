@@ -20,7 +20,7 @@ while opcion != 0:
         from juegos.Buscaminas import iniciar_buscaminas
     elif opcion == 3:
         print("Iniciando Snake...")
-        # código para el juego snake
+        from juegos.snake import iniciar_juego
     elif opcion == 4:
         print("Iniciando Juego de preguntas...")
         # código para el juego de preguntas
