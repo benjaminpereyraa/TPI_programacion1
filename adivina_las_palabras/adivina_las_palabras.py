@@ -1,16 +1,24 @@
 import random
+
 def iniciar_juego():
     def desordenar_palabra(palabra):
+        """Desordena las letras de la palabra."""
         palabra_lista = list(palabra.replace(" ", ""))
         random.shuffle(palabra_lista)
         return ''.join(palabra_lista)
 
     def leer_palabras(archivo):
-        with open(archivo, 'r', encoding='utf-8') as file:
-            palabras = file.read().splitlines()
-        return palabras
+        """Lee las palabras desde un archivo de texto."""
+        try:
+            with open(archivo, 'r', encoding='utf-8') as file:
+                palabras = file.read().splitlines()
+            return palabras
+        except FileNotFoundError:
+            print(f"Error: El archivo {archivo} no se encuentra.")
+            return []
 
     def seleccionar_nivel(nivel):
+        """Selecciona el archivo según el nivel."""
         if nivel == 1:
             return 'sustantivos.txt'
         elif nivel == 2:
@@ -21,6 +29,7 @@ def iniciar_juego():
             return None
 
     def obtener_tipo_palabras(nivel):
+        """Devuelve el tipo de palabra correspondiente al nivel."""
         if nivel == 1:
             return 'SUSTANTIVOS'
         elif nivel == 2:
@@ -31,6 +40,7 @@ def iniciar_juego():
             return ''
 
     def juego():
+        """Función principal que maneja la lógica del juego."""
         niveles = [1, 2, 3]
         nivel_actual = 0
         vidas = 3
@@ -40,6 +50,11 @@ def iniciar_juego():
             archivo_palabras = seleccionar_nivel(niveles[nivel_actual])
             tipo_palabras = obtener_tipo_palabras(niveles[nivel_actual])
             palabras = leer_palabras(archivo_palabras)
+
+            if not palabras:  # Si no se pueden cargar las palabras, se termina el juego
+                print("No se pudieron cargar las palabras. El juego terminará.")
+                break
+
             palabras_usadas = set()
 
             while vidas > 0 and palabras_adivinadas < 20:
@@ -47,11 +62,12 @@ def iniciar_juego():
                 while palabra in palabras_usadas:
                     palabra = random.choice(palabras)
                 palabras_usadas.add(palabra)
+
                 palabra_desordenada = desordenar_palabra(palabra)
                 print(f"{tipo_palabras} (ordena las letras para formar la palabra): {palabra_desordenada}")
-                
-                intento = input("Tu respuesta: ").strip().lower()  
-                if intento == palabra.strip().lower(): 
+
+                intento = input("Tu respuesta: ").strip().lower()
+                if intento == palabra.strip().lower():
                     print("¡Correcto!")
                     palabras_adivinadas += 1
                 else:
@@ -75,4 +91,6 @@ def iniciar_juego():
         print("¡Perfecto, completaste todos los niveles!")
 
     juego()
+
+# Iniciar el juego
 iniciar_juego()

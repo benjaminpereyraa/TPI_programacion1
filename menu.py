@@ -23,8 +23,7 @@ while opcion != 0:
         from juegos.snake import iniciar_juego
     elif opcion == 4:
         print("Iniciando Juego de preguntas...")
-        # código para el juego de preguntas
     elif opcion == 0:
-        print("Gracias por jugar")
+        print("¡Gracias por jugar!")
     else:
         print("Opción no válida. Por favor, elige un número del 0 al 4.")
