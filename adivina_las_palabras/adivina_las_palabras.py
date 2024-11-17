@@ -17,6 +17,7 @@ def iniciar_juego():
             print(f"Error: El archivo {archivo} no se encuentra.")
             return []
 
+
     def seleccionar_nivel(nivel):
         """Selecciona el archivo según el nivel."""
         if nivel == 1:
