@@ -1,1 +1,0 @@
-open("/TPI_PROGRAMACION1/adivina_las_palabras/archivo/sustativos.txt", "r")
